@@ -1,0 +1,64 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title>
+      Artist APP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <swiper-container>
+
+    <swiper-slide>
+      <ion-textarea
+        placeholder="Enter image title"
+        [clearOnEdit]="true">
+      </ion-textarea>
+      <div class="image-container">
+        <ion-img src="assets/icons/photo-camera.svg"></ion-img>
+        <ion-img src="assets/icons/gallery.svg"></ion-img>
+      </div>
+      <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Image</button>
+    </swiper-slide>
+
+    <swiper-slide>
+      <ion-textarea
+      placeholder="Enter video title"
+      [clearOnEdit]="true">
+    </ion-textarea>
+    <div class="image-container">
+      <ion-img src="assets/icons/camera.svg"></ion-img>
+      <ion-img src="assets/icons/upload.svg"></ion-img>
+    </div>
+    <button type="button" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Vídeo</button>
+    </swiper-slide>
+
+    <swiper-slide>
+      <ion-textarea
+      placeholder="Enter poem title"
+      [clearOnEdit]="true">
+      </ion-textarea>
+      <ion-textarea
+      placeholder="Write your poem here!"
+      [autoGrow]="true"
+      value=""
+      >
+      </ion-textarea>
+      <ion-img src="assets/icons/pdf.svg"></ion-img>
+      <button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Poem</button>
+    </swiper-slide>
+
+    <swiper-slide>
+      <ion-textarea
+        placeholder="Enter music title"
+        [clearOnEdit]="true">
+      </ion-textarea>
+      <div class="image-container">
+        <ion-img src="assets/icons/music.svg"></ion-img>
+        <ion-img src="assets/icons/musicup.svg"></ion-img>
+      </div>
+      <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Music</button>
+    </swiper-slide>
+  </swiper-container>
+
+</ion-content>

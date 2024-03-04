@@ -1,0 +1,63 @@
+swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+swiper-slide:nth-child(1) {
+    background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+
+swiper-slide:nth-child(2) {
+    background-image: linear-gradient(to right, #bfe6ba, #8a9ad6);
+}
+
+swiper-slide:nth-child(3) {
+    background-image: linear-gradient(to right, #58a6d5, #f0c94d);
+}
+
+swiper-slide:nth-child(4) {
+    background-image: linear-gradient(to right, #a3d9ff, #ff9a9e);
+}
+
+
+
+ion-img{
+    scale: 60%;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+ion-textarea {
+    font-weight: bold;
+}
+
+ion-title {
+    font-weight: bold;
+    background-image: linear-gradient(to right, #5f2c82, #49a09d, #007f5f, #4b3f72, #3b8d99, #1e96c8, #a6c0fe, #f6d365);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: waveAnimation 8s linear infinite;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Agrega un efecto de sombra al texto para resaltar la animación */
+  }
+  
+  @keyframes waveAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }

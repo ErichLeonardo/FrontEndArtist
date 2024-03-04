@@ -1,0 +1,21 @@
+<ion-content color="light">
+  <ion-list [inset]="true">
+    <ion-item [button]="true" [detail]="false" id="open-modal">
+      <ion-label>Selected Provinces</ion-label>
+      <div slot="end">{{ selectedProvinceText }}</div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-modal trigger="open-modal" #modal>
+  <ng-template>
+    <app-select-province
+      class="ion-page"
+      title="Provinces Selected"
+      [items]="provinces"
+      [selectedItems]="selectedProvinces"
+      (selectionChange)="provinceSelectionChanged($event)"
+      (selectionCancel)="modal.dismiss()"
+    ></app-select-province>
+  </ng-template>
+</ion-modal>
