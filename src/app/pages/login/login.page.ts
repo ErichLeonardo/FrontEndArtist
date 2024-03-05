@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { IonButton, IonInput, IonItem, IonLabel, IonTitle, IonToolbar, IonHeader, IonContent,
 IonNote, IonList, IonImg } from '@ionic/angular/standalone';
 import { ApiService } from 'src/app/service/api.service';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { ApiService } from 'src/app/service/api.service';
   styleUrls: ['./login.page.scss'],
   standalone: true,
   imports: [IonButton, IonInput, IonItem, IonLabel, IonTitle, IonToolbar, IonHeader, IonContent,
-  IonNote, IonList, IonImg]
+  IonNote, IonList, IonImg, FormsModule],
 })
 export class LoginPage implements OnInit {
 
@@ -24,29 +26,20 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    this.apiService.getArtistByEmail(this.email).toPromise()
-      .then((artist: any) => {
-        if (artist) {
-          if (artist.password === this.password) {
-            // Contraseña válida, el usuario está autenticado correctamente
-            console.log('Login exitoso');
-            // Aquí podrías redirigir al usuario a la página principal, por ejemplo
-          } else {
-            // Contraseña incorrecta
-            console.log('Contraseña inválida');
-            // Aquí podrías mostrar un mensaje de error al usuario, por ejemplo
-          }
-        } else {
-          // Artista no encontrado
-          console.log('Artista no encontrado');
-          // Aquí podrías mostrar un mensaje de error al usuario, por ejemplo
-        }
-      })
-      .catch((error) => {
-        // Manejar cualquier error que ocurra al obtener el artista
-        console.error('Error durante el inicio de sesión:', error);
-        // Aquí podrías mostrar un mensaje de error al usuario, por ejemplo
-      });
+    const email = this.email; 
+    const password = this.password; 
+
+    this.apiService.getAllArtists().subscribe((artists: any) => {
+      const artist = artists.find((a: any) => a.email === email && a.password === password);
+      if (artist) {
+        // Usuario autenticado, redirigir a otra página
+        console.log('Usuario autenticado:', artist);
+        this.router.navigate(['tabs/tab5']);
+      } else {
+        // Usuario no encontrado o contraseña incorrecta
+        console.log('Nombre de usuario o contraseña incorrectos');
+      }
+    });
   }
 
   register() {
@@ -56,6 +49,7 @@ export class LoginPage implements OnInit {
 
   forgotPassword() {
     console.log('forgotPassword');
+    this.router.navigate(['forgotpassword']);
   }
 
 }

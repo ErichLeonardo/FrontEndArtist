@@ -17,4 +17,11 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
 export class Tab5Page {
   constructor() {}
 
+  ngOnInit() {
+  }
+
+  logout(){
+    
+  }
+
 }

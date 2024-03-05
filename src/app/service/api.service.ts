@@ -31,6 +31,11 @@ export class ApiService {
     return this.http.post(endpoint, post);
   }
 
+  createOrUpdatePost(post: any){
+    const endpoint = `${environment.api.url}/${environment.api.endpoint_post}`;
+    return this.http.put(endpoint, post);
+  }
+
   getArtist(id: string){
     const endpoint = `${environment.api.url}/${environment.api.endpoint_artist}/${id}`;
     return this.http.get(endpoint);
@@ -50,6 +55,13 @@ export class ApiService {
     const endpoint = `${environment.api.url}/${environment.api.endpoint_artist}/${email}`;
     return this.http.get(endpoint);
   }
+
+  createOrUpdateArtist(artist: any){
+    const endpoint = `${environment.api.url}/${environment.api.endpoint_artist}`;
+    return this.http.put(endpoint, artist);
+  }
+  
+ 
 
 
 

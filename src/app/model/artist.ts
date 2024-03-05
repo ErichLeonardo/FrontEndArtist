@@ -4,7 +4,7 @@ export interface Artist {
     name:string,
     email:string,
     password:string,
-    img?:string
+    image?:string
     age?:number
     ccaa?:string
     province?:string
