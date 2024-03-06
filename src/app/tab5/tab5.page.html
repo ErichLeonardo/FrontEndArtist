@@ -14,7 +14,14 @@
     </ion-toolbar>
   </ion-header>
 
- 
-
-  
+  <ion-card *ngIf="loggedInArtist">
+    <ion-card-header>
+      <ion-card-title>Nombre artístico:  {{ loggedInArtist.artistName }}</ion-card-title>
+      <ion-card-subtitle>Nombre {{ loggedInArtist.name }}<br>Email: {{ loggedInArtist.email }}  <br>   Edad: {{ loggedInArtist.age }}</ion-card-subtitle>
+      <ion-card-subtitle>{{ loggedInArtist.ccaa }} ;  {{ loggedInArtist.province }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Mostrar otras propiedades del usuario aquí -->
+    </ion-card-content>
+  </ion-card>
 </ion-content>

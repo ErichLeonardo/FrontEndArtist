@@ -1,6 +1,6 @@
 export interface Artist {
-    key?:string,
-    artist_name:string,
+    key?:number,
+    artistName:string,
     name:string,
     email:string,
     password:string,

@@ -1,5 +1,5 @@
 export interface PostPoem {
-    key?:string,
+    key?:number,
     title:string,
     content:string,
     media_url?:string,

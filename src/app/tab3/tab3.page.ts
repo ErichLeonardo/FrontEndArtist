@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonTextarea, IonImg } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { ApiService } from '../service/api.service';
 import { FormsModule } from '@angular/forms';
+import { PostPoem } from '../model/post-poem';
+import { LocalStorageService } from '../service/LocalStorageService';
 
 
 
@@ -17,14 +19,49 @@ import { FormsModule } from '@angular/forms';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent, IonButton, 
     IonIcon, IonTextarea, IonImg, FormsModule],
 })
-export class Tab3Page {
+export class Tab3Page implements OnInit{
 
-  public img: string = ''; 
+  public img: string = '';
+  key: number = 8;
   title: string = '';
   content: string = '';
+  loggedInArtist: any;
 
 
-  constructor(private apiService: ApiService) {}
+
+  constructor(private apiService: ApiService, private LocalStorageService: LocalStorageService) {
+   
+  }
+
+  ngOnInit(): void {
+    this.loggedInArtist = this.LocalStorageService.getItem('loggedInArtist');
+  }
+
+  CreatePost2(): void {
+    console.log('title:', this.title);
+    console.log('content:', this.content);
+    console.log('loggedInArtist:', this.loggedInArtist);
+  
+    if (this.title && this.content && this.loggedInArtist && this.loggedInArtist.key) {
+      const postData: PostPoem = {
+        title: this.title,
+        content: this.content,
+        media_url: this.img,
+        id_artist: this.loggedInArtist.key
+      };
+  
+      this.apiService.createPost(postData).subscribe(
+        (response: any) => {
+          console.log('Post creado:', response);
+        },
+        (error: any) => {
+          console.error('Error al crear el post:', error);
+        }
+      );
+    } else {
+      console.error('Faltan datos para crear el post');
+    }
+  }
 
   CreatePost(){
     
@@ -83,7 +120,7 @@ export class Tab3Page {
   }
 
   OpenFiles(){
-    
+    this.OpenGallery();
   }
 
   public async OpenMicrophone(){
@@ -113,16 +150,5 @@ export class Tab3Page {
       console.error('Error accessing the microphone:', error);
     }
   }
-
-
-  CreatePost2(){
-    const title = this.title;
-    const content = this.content;
-
-    this.apiService.createOrUpdatePost({title, content}).subscribe((posts: any) => {
-      console.log(posts);
-    })
-  }
-
 
 }

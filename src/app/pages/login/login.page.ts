@@ -28,20 +28,20 @@ export class LoginPage implements OnInit {
   login() {
     const email = this.email; 
     const password = this.password; 
-
+  
     this.apiService.getAllArtists().subscribe((artists: any) => {
       const artist = artists.find((a: any) => a.email === email && a.password === password);
       if (artist) {
-        // Usuario autenticado, redirigir a otra página
+        // Usuario autenticado, redirigir a tab5 y pasar el usuario como parámetro
         console.log('Usuario autenticado:', artist);
-        this.router.navigate(['tabs/tab5']);
+        this.router.navigate(['tabs/tab5'], { state: { loggedInArtist: artist } });
       } else {
         // Usuario no encontrado o contraseña incorrecta
         console.log('Nombre de usuario o contraseña incorrectos');
       }
     });
   }
-
+  
   register() {
     console.log('register');
     this.router.navigate(['form']);

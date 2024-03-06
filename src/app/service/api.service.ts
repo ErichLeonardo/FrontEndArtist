@@ -16,11 +16,6 @@ export class ApiService {
     return this.http.get(endpoint);
   }
 
-  createArtist(artist: any) {
-    const endpoint = `${environment.api.url}/${environment.api.endpoint_artist}`;
-    return this.http.post(endpoint, artist);
-  }
-
   getAllPosts(){
     const endpoint = `${environment.api.url}/${environment.api.endpoint_post}`;
     return this.http.get(endpoint);
@@ -31,8 +26,8 @@ export class ApiService {
     return this.http.post(endpoint, post);
   }
 
-  createOrUpdatePost(post: any){
-    const endpoint = `${environment.api.url}/${environment.api.endpoint_post}`;
+  updatePost(post: any){
+    const endpoint = `${environment.api.url}/${environment.api.endpoint_post}/${post.key}`;
     return this.http.put(endpoint, post);
   }
 
@@ -56,10 +51,11 @@ export class ApiService {
     return this.http.get(endpoint);
   }
 
-  createOrUpdateArtist(artist: any){
-    const endpoint = `${environment.api.url}/${environment.api.endpoint_artist}`;
-    return this.http.put(endpoint, artist);
-  }
+  createArtist(artist: any){
+    const endpoint = `${environment.api.url}/${environment.api.endpoint_artist}/create`;
+    return this.http.post(endpoint, artist);
+}
+
   
  
 

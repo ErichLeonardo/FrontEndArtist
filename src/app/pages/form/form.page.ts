@@ -23,9 +23,10 @@ export class FormPage {
 
   registerForm: FormGroup;
 
+  key: number = 8; // Inicializas la clave con un valor inicial, por ejemplo 0
   email: string = '';
   password: string = '';
-  artist_name: string = '';
+  artistName: string = '';
   name: string = '';
   ccaa: string = '';
   province: string = '';
@@ -41,7 +42,7 @@ export class FormPage {
     this.registerForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
-      artist_name: ['', Validators.required],
+      artistName: ['', Validators.required],
       name: [''],
       age: ['', Validators.required],
       ccaa: ['', Validators.required],
@@ -51,28 +52,15 @@ export class FormPage {
     });
   }
 
-  CompleteRegister() {
-    const email = this.email;
-    const password = this.password;
-    const artist_name = this.artist_name;
-    const name = this.name;
-    const age = this.age;
-    const ccaa = this.ccaa;
-    const province = this.province;
-    const image = this.image;
-
-    this.apiService.createOrUpdateArtist({email, password, artist_name, name, age, ccaa, province, image}).subscribe((artists: any) => {
-      console.log(artists);
-      this.router.navigate(['login']);
-    });
-  }
   
-  register(): void {
+  
+  CompleteRegister(): void {
     if (this.registerForm.valid) {
       const artistData: Artist = {
+        key: 0,
         email: this.registerForm.value.email,
         password: this.registerForm.value.password,
-        artist_name: this.registerForm.value.artist_name,
+        artistName: this.registerForm.value.artistName,
         name: this.registerForm.value.name,
         age: this.registerForm.value.age,
         ccaa: this.registerForm.value.ccaa,
@@ -80,9 +68,10 @@ export class FormPage {
         image: this.registerForm.value.image
       };
 
-      this.apiService.createOrUpdateArtist(artistData)
+      this.apiService.createArtist(artistData)
         .subscribe(
           (response: any) => {
+            console.log('Registro exitoso:', response);
             if (response) {
               this.showToast('Registro exitoso', 'success', 2000);
               this.router.navigate(['login']);
