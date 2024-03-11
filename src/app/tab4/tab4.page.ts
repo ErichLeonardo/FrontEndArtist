@@ -3,7 +3,6 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonTex
   IonSegment, IonSegmentButton, IonLabel, IonSelectOption, IonSelect, IonList } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { IonModal, IonicModule } from '@ionic/angular';
-import { Province } from '../model/Province';
 import { SelectProvinceComponent } from '../components/select-province/select-province.component';
 
 @Component({
